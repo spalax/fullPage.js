@@ -429,6 +429,28 @@
         };
 
         /**
+         * Disable observe scroll events
+         */
+        FP.disableScrollHandler = function () {
+            $window.off('scroll', scrollHandler);
+        };
+
+        /**
+         * Disable css3 animation/transitions, might be usefull 
+         * to avoid IOS background flickering
+         */
+        FP.setCss3 = function (flag) {
+            setVariableState('css3', flag);
+        };
+
+       /**
+        * Enable observe scroll events
+        */ 
+        FP.enableScrollHandler = function () {
+            $window.on('scroll', scrollHandler);
+        };
+
+        /**
         * Turns fullPage.js to normal scrolling mode when the viewport `width` or `height`
         * are smaller than the set limit values.
         */
@@ -2333,18 +2355,6 @@
             }
         }
 
-        FP.disableScrollHandler = function () {
-            $window.off('scroll', scrollHandler);
-        };
-
-        FP.setCss3 = function (flag) {
-            setVariableState('css3', flag);
-        };
-
-        FP.enableScrollHandler = function () {
-            $window.on('scroll', scrollHandler);
-        };
-        
         /*
         * Destroys fullpage.js plugin events and optinally its html markup and styles
         */
