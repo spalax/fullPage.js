@@ -2329,6 +2329,18 @@
             }
         }
 
+        FP.disableScrollHandler = function () {
+            $window.off('scroll', scrollHandler);
+        };
+
+        FP.setCss3 = function (flag) {
+            setVariableState('css3', flag);
+        };
+
+        FP.enableScrollHandler = function () {
+            $window.on('scroll', scrollHandler);
+        };
+        
         /*
         * Destroys fullpage.js plugin events and optinally its html markup and styles
         */
