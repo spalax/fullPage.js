@@ -106,6 +106,7 @@
 
             //resizing
             immediateResizeHandling: false,
+            disableAnimationOnResize: false,
 
             //scrolling
             css3: true,
@@ -1748,6 +1749,7 @@
             }else{
                 //in order to call the functions only when the resize is finished
                 //http://stackoverflow.com/questions/4298612/jquery-how-to-call-resize-event-only-once-its-finished-resizing
+
                 if (!options.immediateResizeHandling) {
                     clearTimeout(resizeId);
 
@@ -1755,9 +1757,14 @@
                         FP.reBuild(true);
                     }, 350);
                 } else {
-                    FP.reBuild(true);
+                    if (options.disableAnimationOnResize) {
+                        FP.setScrollingSpeed(0);
+                        FP.reBuild(true);
+                        FP.setScrollingSpeed(700);
+                    } else {
+                        FP.reBuild(true);
+                    }
                 }
-
             }
         }
 
