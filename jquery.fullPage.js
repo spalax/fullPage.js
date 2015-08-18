@@ -454,6 +454,13 @@
             $window.on('scroll', scrollHandler);
         };
 
+       /**
+        * Enable observe scroll events
+        */
+        FP.getScrollingSpeed = function () {
+            return originals.scrollingSpeed;
+        };
+
         /**
         * Turns fullPage.js to normal scrolling mode when the viewport `width` or `height`
         * are smaller than the set limit values.
