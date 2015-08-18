@@ -1748,7 +1748,7 @@
                         FP.reBuild(true);
                     }, 350);
                 } else {
-                    FP.rebuild(true);
+                    FP.reBuild(true);
                 }
 
             }
