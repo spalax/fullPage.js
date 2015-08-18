@@ -104,6 +104,9 @@
             slidesNavPosition: 'bottom',
             scrollBar: false,
 
+            //resizing
+            immediateResizeHandling: false,
+
             //scrolling
             css3: true,
             scrollingSpeed: 700,
@@ -1738,11 +1741,16 @@
             }else{
                 //in order to call the functions only when the resize is finished
                 //http://stackoverflow.com/questions/4298612/jquery-how-to-call-resize-event-only-once-its-finished-resizing
-                clearTimeout(resizeId);
+                if (!options.immediateResizeHandling) {
+                    clearTimeout(resizeId);
 
-                resizeId = setTimeout(function(){
-                    FP.reBuild(true);
-                }, 350);
+                    resizeId = setTimeout(function(){
+                        FP.reBuild(true);
+                    }, 350);
+                } else {
+                    FP.rebuild(true);
+                }
+
             }
         }
 
