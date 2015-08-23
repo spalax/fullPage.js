@@ -455,11 +455,11 @@
             $window.on('scroll', scrollHandler);
         };
 
-       /**
-        * Enable observe scroll events
+        /**
+        * Get state of autoScrolling option
         */
-        FP.getScrollingSpeed = function () {
-            return originals.scrollingSpeed;
+        FP.getAutoScrolling = function () {
+            return options.autoScrolling;
         };
 
         /**
