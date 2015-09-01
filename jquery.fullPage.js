@@ -437,6 +437,7 @@
          * Disable observe scroll events
          */
         FP.disableScrollHandler = function () {
+            disabledScrollHandling = true;
             $window.off('scroll', scrollHandler);
         };
 
@@ -452,6 +453,7 @@
         * Enable observe scroll events
         */ 
         FP.enableScrollHandler = function () {
+            disabledScrollHandling = false;
             $window.on('scroll', scrollHandler);
         };
 
@@ -499,6 +501,7 @@
         var scrollings = [];
         var nav;
         var controlPressed;
+        var disabledScrollHandling;
         var isScrollAllowed = {};
         isScrollAllowed.m = {  'up':true, 'down':true, 'left':true, 'right':true };
         isScrollAllowed.k = $.extend(true,{}, isScrollAllowed.m);
@@ -803,8 +806,10 @@
 
         var isScrolling = false;
 
-        //when scrolling...
-        $window.on('scroll', scrollHandler);
+        if (!disabledScrollHandling) {
+            //when scrolling...
+            $window.on('scroll', scrollHandler);
+        }
 
         function scrollHandler(){
             var currentSection;
